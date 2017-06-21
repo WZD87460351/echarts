@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echarts</title>
+    <script src="echarts.js"></script>
+</head>
+<body>
+    <button id="btn">切换</button>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    
+    <script type="text/javascript">
+        var kinds = ["西瓜","牛油果","雪梨","猕猴桃","山竹","苹果","葡萄"];
+        var count = [30, 20, 36, 10, 10, 20, 35];
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '月销售量',
+//                link:'https://www.baidu.com/'
+                textStyle:{
+                    color:'#ddd',
+                    fontStyle:'oblique',
+                    fontFamily:'sans-serif',
+                    fontSize: 18,
+                    
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    animation: false,
+                    label: {
+                        backgroundColor: '#505765'
+                    }
+                }
+            },
+            legend: {
+                data:['水果'],
+//                bottom:10,
+            },
+            xAxis: {
+                data: kinds,
+            },
+            yAxis: {},
+            series: [{
+                name: '水果',
+                type: 'bar',
+                data: count,
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        
+        var btn = document.getElementById('btn')
+        
+        btn.onclick = function(){
+            kinds = ["hh","gg","hh","jj","kk","ll","nn"];
+            count = [10, 11, 12, 13, 14, 15, 16];
+            
+            var option = {
+            
+                xAxis: {
+                    data: kinds,
+                },
+          
+                series: [{
+
+                    data: count,
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            
+        }
+    </script>
+</body>
+</html>
